@@ -2,6 +2,7 @@ package com.sejukebox.jukebox.data.concretes;
 
 import com.sejukebox.jukebox.data.abstracts.IUserRepository;
 import com.sejukebox.jukebox.dataAccess.UserDao;
+import com.sejukebox.jukebox.dtos.AddUserDto;
 import com.sejukebox.jukebox.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,4 +23,18 @@ public class UserRepository implements IUserRepository {
     public List<User> findAll() {
         return userDao.findAll();
     }
+
+    @Override
+    public User add(AddUserDto addUserDto) {
+
+        User user = new User(
+                addUserDto.getUserName(),
+                addUserDto.getPassword(),
+                addUserDto.getEmail());
+
+        userDao.save(user);
+
+        return user;
+    }
+
 }

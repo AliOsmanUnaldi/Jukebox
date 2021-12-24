@@ -1,13 +1,13 @@
 package com.sejukebox.jukebox.controllers;
 
 import com.sejukebox.jukebox.data.abstracts.ISongRepository;
+import com.sejukebox.jukebox.dtos.AddSongDto;
 import com.sejukebox.jukebox.models.Song;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -21,19 +21,30 @@ public class SongController {
         this.songRepository = songRepository;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     List<Song> getAll(){
         return songRepository.findAll();
     }
 
-    @GetMapping("/getbysongid")
+    @GetMapping("/findBySongId")
     public Song findBySongId(@RequestParam long songId){
         return this.songRepository.findBySongId(songId);
     }
 
-    @GetMapping("/getbyownerid")
+    @GetMapping("/findByOwnerId")
     public List<Song> findByOwnerId(@RequestParam long ownerId){
         return this.songRepository.findByOwnerId(ownerId);
+    }
+
+    @PostMapping("/addOrUpdateSong")
+    public Song addOrUpdateSong(@Valid @NotNull @RequestBody AddSongDto addSongDto){
+        return this.songRepository.add(addSongDto);
+    }
+
+    @DeleteMapping("/deleteBySongId")
+    public String deleteBySongId(long songId){
+        this.songRepository.deleteBySongId(songId);
+        return "SONG IS DELETED.";
     }
 
 }

@@ -2,6 +2,7 @@ package com.sejukebox.jukebox.data.concretes;
 
 import com.sejukebox.jukebox.data.abstracts.IVoteRepository;
 import com.sejukebox.jukebox.dataAccess.VoteDao;
+import com.sejukebox.jukebox.dtos.AddVoteDto;
 import com.sejukebox.jukebox.models.Vote;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,17 @@ public class VoteRepository implements IVoteRepository {
     @Override
     public List<Vote> findByUsersVote(long usersVote) {
         return this.voteDao.findByUsersVote(usersVote);
+    }
+
+    @Override
+    public Vote createVote(AddVoteDto addVoteDto) {
+
+        Vote vote=new Vote(
+                addVoteDto.getSongsVote(),
+                addVoteDto.getUsersVote());
+
+        this.voteDao.save(vote);
+        return vote;
     }
 
 }

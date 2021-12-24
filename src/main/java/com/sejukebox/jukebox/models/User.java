@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     @Column(name = "user_id")
     private long userId;
 
@@ -29,4 +29,11 @@ public class User {
 
     @Column(name = "is_host")
     private boolean isHost;
+
+
+    public User(String userName, String password, String email) {
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+    }
 }

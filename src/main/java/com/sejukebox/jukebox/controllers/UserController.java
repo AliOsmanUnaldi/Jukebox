@@ -1,11 +1,10 @@
 package com.sejukebox.jukebox.controllers;
 
 import com.sejukebox.jukebox.data.abstracts.IUserRepository;
+import com.sejukebox.jukebox.dtos.AddUserDto;
 import com.sejukebox.jukebox.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +19,16 @@ public class UserController{
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     List<User> getAll(){
         return userRepository.findAll();
     }
+
+    @PostMapping("/addUser")
+    User addUser(AddUserDto addUserDto){
+        return userRepository.add(addUserDto);
+    }
+
+
+
 }

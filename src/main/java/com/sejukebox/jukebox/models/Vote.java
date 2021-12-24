@@ -23,4 +23,9 @@ public class Vote {
 
     @Column(name = "user_id")
     private long usersVote;
+
+    public Vote(long songsVote, long usersVote) {
+        this.songsVote = songsVote;
+        this.usersVote = usersVote;
+    }
 }

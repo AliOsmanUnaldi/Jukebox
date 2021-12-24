@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -15,9 +17,17 @@ import javax.persistence.*;
 public class Song {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "song_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "song_id",unique = true)
+    @NotNull
+    @NotBlank
     private long songId;
+
+    public Song(String songName, String singer, long ownerId) {
+        this.songName = songName;
+        this.singer = singer;
+        this.ownerId = ownerId;
+    }
 
     @Column(name = "song_name")
     private String songName;

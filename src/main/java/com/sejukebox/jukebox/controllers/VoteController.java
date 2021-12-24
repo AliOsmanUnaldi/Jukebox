@@ -1,12 +1,10 @@
 package com.sejukebox.jukebox.controllers;
 
 import com.sejukebox.jukebox.data.abstracts.IVoteRepository;
+import com.sejukebox.jukebox.dtos.AddVoteDto;
 import com.sejukebox.jukebox.models.Vote;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +27,10 @@ public class VoteController {
     @GetMapping("/getByUsersVote")
     public List<Vote> findByUsersVote(@RequestParam long usersVote){
         return this.voteRepository.findByUsersVote(usersVote);
+    }
+
+    @PostMapping("/addVote")
+    public Vote addVote(@RequestBody AddVoteDto addVoteDto){
+        return this.voteRepository.createVote(addVoteDto);
     }
 }
