@@ -9,4 +9,6 @@ import java.util.List;
 public interface UserDao extends JpaRepository<User,Long> {
 
     User getByUserId(long userId);
+    User getByUserNameAndPassword(String userName,String password);
+    User getByEmailAndPassword(String email,String password);
 }

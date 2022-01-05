@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface VoteDao extends JpaRepository<Vote,Long> {
 
-    List<Vote> findBySongsVote(long songsVote);
-    List<Vote> findByUsersVote(long usersVote);
+    List<Vote> findBySongsVote(long songsId);
+    List<Vote> findByUsersVote(long usersId);
 }

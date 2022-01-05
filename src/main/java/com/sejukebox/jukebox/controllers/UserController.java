@@ -1,6 +1,6 @@
 package com.sejukebox.jukebox.controllers;
 
-import com.sejukebox.jukebox.data.abstracts.IUserRepository;
+import com.sejukebox.jukebox.business.abstracts.IUserRepository;
 import com.sejukebox.jukebox.dtos.AddUserDto;
 import com.sejukebox.jukebox.models.User;
 import org.springframework.beans.factory.annotation.Autowired;

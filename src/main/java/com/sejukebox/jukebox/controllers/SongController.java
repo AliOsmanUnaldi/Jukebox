@@ -1,6 +1,6 @@
 package com.sejukebox.jukebox.controllers;
 
-import com.sejukebox.jukebox.data.abstracts.ISongRepository;
+import com.sejukebox.jukebox.business.abstracts.ISongRepository;
 import com.sejukebox.jukebox.dtos.AddSongDto;
 import com.sejukebox.jukebox.models.Song;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,7 @@ public class SongController {
 
     @GetMapping("/findByOwnerId")
     public List<Song> findByOwnerId(@RequestParam long ownerId){
+
         return this.songRepository.findByOwnerId(ownerId);
     }
 
@@ -45,6 +46,11 @@ public class SongController {
     public String deleteBySongId(long songId){
         this.songRepository.deleteBySongId(songId);
         return "SONG IS DELETED.";
+    }
+
+    @GetMapping("/finishVoting")
+    public String finishVoting(@RequestParam long ownerId){
+        return songRepository.finishVoting(ownerId);
     }
 
 }

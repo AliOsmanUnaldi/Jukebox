@@ -37,4 +37,7 @@ public class Song {
 
     @Column(name = "owner_id")
     private long ownerId;
+
+    @Column(name = "code")
+    private int code;
 }

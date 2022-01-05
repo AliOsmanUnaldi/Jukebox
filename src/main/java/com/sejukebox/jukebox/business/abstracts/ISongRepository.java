@@ -1,4 +1,4 @@
-package com.sejukebox.jukebox.data.abstracts;
+package com.sejukebox.jukebox.business.abstracts;
 
 import com.sejukebox.jukebox.dtos.AddSongDto;
 import com.sejukebox.jukebox.models.Song;
@@ -12,4 +12,5 @@ public interface ISongRepository {
     List<Song> findByOwnerId(long ownerId);
     Song add(AddSongDto addSongDto);
     void deleteBySongId(long songId);
+    String finishVoting(long ownerId);
 }
