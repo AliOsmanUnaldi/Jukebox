@@ -2,6 +2,7 @@ package com.sejukebox.jukebox.controllers;
 
 import com.sejukebox.jukebox.business.abstracts.ISongRepository;
 import com.sejukebox.jukebox.dtos.AddSongDto;
+import com.sejukebox.jukebox.dtos.SortSongDto;
 import com.sejukebox.jukebox.models.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,4 +54,13 @@ public class SongController {
         return songRepository.finishVoting(ownerId);
     }
 
+    @GetMapping("/getSortedSongs")
+    public List<SortSongDto> getSortedSongs(@RequestParam long ownerId){
+        return songRepository.sortSongs(ownerId);
+    }
+
+    @GetMapping("/findByCode")
+    public List<Song> findByCode(@RequestParam int code){
+        return songRepository.findByCode(code);
+    }
 }

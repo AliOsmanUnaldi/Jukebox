@@ -9,4 +9,5 @@ public interface SongDao extends JpaRepository<Song,Long> {
 
     Song findBySongId(long songId);
     List<Song> findByOwnerId(long ownerId);
+    List<Song> findByCode(int code);
 }

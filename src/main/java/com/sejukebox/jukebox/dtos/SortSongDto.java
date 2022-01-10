@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class SortSongDto {
-    private long songId;
-    private int voteNumber;
+
+    private String songName;
+    private String singer;
+    private long ownerId;
+    private int code;
+    private int numberOfTotalVotes;
+
 }
